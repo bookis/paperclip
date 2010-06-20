@@ -20,7 +20,13 @@ more detailed options.
 In your model:
 
   class User < ActiveRecord::Base
-    has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :image, :styles => { 
+                    :full => "600x600>", 
+                    :thumb => "100x100>" },
+                    :storage => :googlestorage,
+                    :path => ":attachment/:id/:style.:extension",
+                    :bucket  => YOUR_BUCKET_NAME,
+                    :google_storage_credentials => "#{RAILS_ROOT}/config/google_storage.yml"
   end
 
 In your migrations:
@@ -58,6 +64,11 @@ In your show view:
   <%= image_tag @user.avatar.url %>
   <%= image_tag @user.avatar.url(:medium) %>
   <%= image_tag @user.avatar.url(:thumb) %>
+
+Create the file confib/google_storage.yml to contain your credentials:
+
+access_key_id: GOOGXXXXXXXXXXXX 
+secret_access_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ==Usage
 
