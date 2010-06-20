@@ -9,7 +9,7 @@ exclude_files = ["test/s3.yml", "test/debug.log", "test/paperclip.db", "test/doc
 end.flatten
 
 spec = Gem::Specification.new do |s|
-  s.name              = "paperclip"
+  s.name              = "bookis-paperclip"
   s.version           = Paperclip::VERSION
   s.author            = "Jon Yurek"
   s.email             = "jyurek@thoughtbot.com"
@@ -30,5 +30,6 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency 'shoulda'
   s.add_development_dependency 'mocha'
   s.add_development_dependency 'aws-s3'
+  s.add_development_dependency 'gstore'
   s.add_development_dependency 'sqlite3-ruby'
 end
